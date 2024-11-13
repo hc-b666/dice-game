@@ -1,0 +1,14 @@
+{
+  "name": "dice-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "duche",
+  "license": "MIT",
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "readline-sync": "^1.4.10"
+  }
+}
