@@ -1,4 +1,4 @@
-const AsciiTable = require("ascii-table");
+const AsciiTable = require('ascii-table');
 
 class Help {
   static assignDices(dices) {
@@ -7,8 +7,8 @@ class Help {
 
   static calculateWinProbability(d1, d2) {
     let wins = 0;
-    d1.values.forEach(v1 => {
-      d2.values.forEach(v2 => {
+    d1.vals.forEach((v1) => {
+      d2.vals.forEach((v2) => {
         if (v1 > v2) {
           wins++;
         }
@@ -18,12 +18,12 @@ class Help {
   }
 
   static getHelp() {
-    let table = new AsciiTable("Probability of the wins for the user:");
-    let cols = this.dices.map(d => `${d.values.join(",")}`);
-    table.setHeading("User \\ Computer", ...cols);
-    
+    let table = new AsciiTable('Probability of the wins for the user:');
+    let cols = this.dices.map((d) => d.vals.join(','));
+    table.setHeading('User \\ Computer', ...cols);
+
     this.dices.forEach((d1, i) => {
-      let r = [d1.values.join(",")];
+      let r = [d1.vals.join(',')];
       this.dices.forEach((d2, j) => {
         if (i === j) {
           r.push(`- (${(1 / this.dices.length).toFixed(4)})`);
