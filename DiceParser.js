@@ -5,7 +5,7 @@ class DiceParser {
     const dices = args.map((diceStr, i) => {
       const vals = diceStr.split(',').map(Number);
       if (vals.length !== 6 || vals.some(isNaN)) {
-        throw new Error(`Error: Argument ${i + 1} is invalid. Each argument must be a string of 6 comma-separated integers. Example: 2,2,4,4,9,9`);
+        throw new Error(`Error: Dice [${diceStr}] is invalid. Each argument must be a string of 6 comma-separated integers. Example: 2,2,4,4,9,9`);
       }
       return new Dice(vals);
     });

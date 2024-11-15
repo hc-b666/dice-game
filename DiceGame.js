@@ -84,7 +84,11 @@ class DiceGame {
     const { pcChoice, key, hmac } = HMACCalculator.getKeyAndHmac(6);
     console.log(`I selected a random value in the range 0..5 (HMAC=${hmac}).`);
     console.log('Add your number module 6');
-    let plChoice = Player.playerThrow();
+    let plChoice;
+    do {
+      plChoice = Player.playerThrow();
+    } while (plChoice === 'help' || plChoice === '');
+
     console.log(`My number is ${pcChoice} (KEY=${key.toString('hex')}).`);
     const mod = (plChoice + pcChoice) % 6;
     console.log(`The result is ${plChoice} + ${pcChoice} = ${mod} (mod 6).`);
