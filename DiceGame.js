@@ -18,10 +18,10 @@ class DiceGame {
     const { pcChoice, key, hmac } = HMACCalculator.getKeyAndHmac(2);
     console.log(`I selected a random value in the range 0..1 (HMAC=${hmac}).`);
 
-    let plChoice = Player.guessFirstMove();
-    while (plChoice === 'help') {
+    let plChoice;
+    do {
       plChoice = Player.guessFirstMove();
-    }
+    } while (plChoice === 'help' || plChoice === '');
 
     const computerResponse = `My selection: ${pcChoice} (Key=${key.toString('hex')}).`;
 
@@ -44,10 +44,10 @@ class DiceGame {
   }
 
   choosePlayerDice() {
-    let plDiceIdx = Player.getPlayerDiceChoice(this.dices);
-    while (plDiceIdx === 'help') {
+    let plDiceIdx;
+    do {
       plDiceIdx = Player.getPlayerDiceChoice(this.dices);
-    }
+    } while (plDiceIdx === 'help' || plDiceIdx === '');
 
     this.plDice = this.dices[plDiceIdx];
     this.dices = this.dices.filter((_, i) => i !== plDiceIdx);
@@ -66,11 +66,11 @@ class DiceGame {
     const { pcChoice, key, hmac } = HMACCalculator.getKeyAndHmac(6);
     console.log(`I selected a random value in the range 0..5 (HMAC=${hmac}).`);
     console.log('Add your number module 6');
-    let plChoice = Player.playerThrow();
 
-    while (plChoice === 'help') {
+    let plChoice;
+    do {
       plChoice = Player.playerThrow();
-    }
+    } while (plChoice === 'help' || plChoice === '');
 
     console.log(`My number is ${pcChoice} (KEY=${key.toString('hex')}).`);
     const mod = (plChoice + pcChoice) % 6;

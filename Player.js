@@ -19,6 +19,11 @@ class Player {
       return 'help';
     }
 
+    if (ans === '') {
+      console.log(STATIC.COLORS.RED + 'Input cannot be empty. Please enter a valid option.' + STATIC.COLORS.RESET);
+      return this.handlePlayerChoice(opts, max);
+    }
+
     const ansNum = Number(ans);
     if (isNaN(ansNum) || ansNum < 0 || ansNum > max) {
       console.log(STATIC.COLORS.RED + 'Your entry is does not match to any of options' + STATIC.COLORS.RESET);
